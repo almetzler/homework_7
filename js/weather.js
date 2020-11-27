@@ -10,7 +10,7 @@ function gettingJSON(){
     location = document.querySelector("#location").value;
     if (location.length == 0){
         city = 'ann arbor';
-        cntry = ''
+        location = 'ann arbor'
     }
     else{
         city = location.split(',')[0];
@@ -19,7 +19,7 @@ function gettingJSON(){
     //do something about zip code, country code inputs
 
     // Your code here.
-    console.log("Location is : " + city+','+cntry);
+    console.log("Location is : " + location);
 
     //set default temperature format if one isn't provided
     let format;
@@ -36,10 +36,10 @@ function gettingJSON(){
     //set the query  
     let query;
     if(isNaN(city)){
-        query = 'https://api.openweathermap.org/data/2.5/weather?q='+city+','+cntry+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
+        query = 'https://api.openweathermap.org/data/2.5/weather?q='+location+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
     }
     else{
-        query = 'https://api.openweathermap.org/data/2.5/weather?zip='+city+','+cntry+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
+        query = 'https://api.openweathermap.org/data/2.5/weather?zip='+location+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
     }
     // Your code here.  
     
