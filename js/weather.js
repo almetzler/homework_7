@@ -68,7 +68,7 @@ function gettingJSON(){
 
         document.querySelector("#loc").innerHTML = loc;
         document.querySelector("#temp").innerHTML = temp+' with '+altImg;
-        document.querySelector('#tempImg').src = 'http://openweathermap.org/img/wn/'+tempImg+'.png';
+        document.querySelector('#tempImg').src = 'https://openweathermap.org/img/wn/'+tempImg+'.png';
         document.querySelector('#tempImg').alt = altImg;
         document.querySelector('#tempImg').title = altImg;
     });
