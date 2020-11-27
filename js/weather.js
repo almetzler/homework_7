@@ -10,7 +10,7 @@ function gettingJSON(){
     location = document.querySelector("#location").value;
     if (location.length == 0){
         city = 'ann arbor';
-        cntry = 'US'
+        cntry = ''
     }
     else{
         city = location.split(',')[0];
@@ -68,7 +68,7 @@ function gettingJSON(){
 
         document.querySelector("#loc").innerHTML = loc;
         document.querySelector("#temp").innerHTML = temp+' with '+altImg;
-        document.querySelector('#tempImg').src = 'http://openweathermap.org/img/wn/'+tempImg+'@2x.png';
+        document.querySelector('#tempImg').src = 'http://openweathermap.org/img/wn/'+tempImg+'.png';
         document.querySelector('#tempImg').alt = altImg;
         document.querySelector('#tempImg').title = altImg;
     });
