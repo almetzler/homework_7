@@ -5,13 +5,21 @@ function gettingJSON(){
 
     //Set default location if one isn't provided
     let location;
+    let city;
+    let cntry;
     location = document.querySelector("#location").value;
     if (location.length == 0){
-        location = 'ann arbor,us';
+        city = 'ann arbor';
+        cntry = 'US'
     }
+    else{
+        city = location.split(',')[0];
+        cntry = location.split(',')[1];
+    }
+    //do something about zip code, country code inputs
 
     // Your code here.
-    console.log("Location is : " + location);
+    console.log("Location is : " + city+','+cntry);
 
     //set default temperature format if one isn't provided
     let format;
@@ -27,11 +35,11 @@ function gettingJSON(){
 
     //set the query  
     let query;
-    if(isNaN(location)){
-        query = 'https://api.openweathermap.org/data/2.5/weather?q='+location+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
+    if(isNaN(city)){
+        query = 'https://api.openweathermap.org/data/2.5/weather?q='+city+','+cntry+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
     }
     else{
-        query = 'https://api.openweathermap.org/data/2.5/weather?zip='+location+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
+        query = 'https://api.openweathermap.org/data/2.5/weather?zip='+city+','+cntry+'&units='+format+'&appid=303aa92eb13b4435c439ca69778d664d';
     }
     // Your code here.  
     
@@ -43,6 +51,7 @@ function gettingJSON(){
     let loc;
     let temp;
     let tempImg;
+    let altImg;
     // Your code here.
 
 
@@ -54,8 +63,13 @@ function gettingJSON(){
         // Your code here.
         loc = json['name'];
         temp = json['main']['temp'];
+        tempImg = json['weather'][0]['icon'];
+        altImg = json['weather'][0]['description'];
 
         document.querySelector("#loc").innerHTML = loc;
-        document.querySelector("#temp").innerHTML = temp;
+        document.querySelector("#temp").innerHTML = temp+' with '+altImg;
+        document.querySelector('#tempImg').src = 'http://openweathermap.org/img/wn/'+tempImg+'@2x.png';
+        document.querySelector('#tempImg').alt = altImg;
+        document.querySelector('#tempImg').title = altImg;
     });
 }
